@@ -1,0 +1,1596 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="schoolModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Announce">
+          <Key>
+            <PropertyRef Name="Announce_Id" />
+          </Key>
+          <Property Name="Announce_Id" Type="int" Nullable="false" />
+          <Property Name="Announce_Creation" Type="datetime" Nullable="false" />
+          <Property Name="Announce_Expiration" Type="datetime" Nullable="false" />
+          <Property Name="Announce_Message" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Announce_Setup">
+          <Key>
+            <PropertyRef Name="Group_Id" />
+            <PropertyRef Name="Announce_Id" />
+          </Key>
+          <Property Name="Group_Id" Type="int" Nullable="false" />
+          <Property Name="Announce_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Class_Attendance">
+          <Key>
+            <PropertyRef Name="Attendance_Id" />
+          </Key>
+          <Property Name="Attendance_Id" Type="int" Nullable="false" />
+          <Property Name="Attendance_Topic" Type="text" />
+          <Property Name="Attendance_Start_Time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Attendance_End_Time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Attendance_Date" Type="date" Nullable="false" />
+          <Property Name="Staff_Id" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Lesson_Id" Type="int" Nullable="false" />
+          <Property Name="Group_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Class_Attendance_Detail">
+          <Key>
+            <PropertyRef Name="Student_Id" />
+            <PropertyRef Name="Attendance_Id" />
+          </Key>
+          <Property Name="Student_Id" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Attendance_Id" Type="int" Nullable="false" />
+          <Property Name="Attend" Type="bit" Nullable="false" />
+          <Property Name="Notes" Type="text" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Grade">
+          <Key>
+            <PropertyRef Name="Grade_Id" />
+          </Key>
+          <Property Name="Grade_Id" Type="int" Nullable="false" />
+          <Property Name="Grade_Consecutive_Order" Type="int" Nullable="false" />
+          <Property Name="Grade_Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="Group_Id" />
+          </Key>
+          <Property Name="Group_Id" Type="int" Nullable="false" />
+          <Property Name="Group_Order" Type="int" Nullable="false" />
+          <Property Name="Period_Id" Type="int" Nullable="false" />
+          <Property Name="Shift_Id" Type="int" Nullable="false" />
+          <Property Name="Grade_Id" Type="int" Nullable="false" />
+          <Property Name="Index_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Group_Attendance">
+          <Key>
+            <PropertyRef Name="Group_Id" />
+            <PropertyRef Name="Group_Date" />
+          </Key>
+          <Property Name="Group_Id" Type="int" Nullable="false" />
+          <Property Name="Group_Date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Group_List">
+          <Key>
+            <PropertyRef Name="Student_Id" />
+            <PropertyRef Name="Group_Id" />
+          </Key>
+          <Property Name="Student_Id" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Group_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Index">
+          <Key>
+            <PropertyRef Name="Index_Id" />
+          </Key>
+          <Property Name="Index_Id" Type="int" Nullable="false" />
+          <Property Name="Index_Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Lesson">
+          <Key>
+            <PropertyRef Name="Lesson_Id" />
+          </Key>
+          <Property Name="Lesson_Id" Type="int" Nullable="false" />
+          <Property Name="Lesson_Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Lesson_Description" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Period">
+          <Key>
+            <PropertyRef Name="Period_Id" />
+          </Key>
+          <Property Name="Period_Id" Type="int" Nullable="false" />
+          <Property Name="Period_Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Period_Start_Date" Type="date" Nullable="false" />
+          <Property Name="Period_End_Date" Type="date" Nullable="false" />
+          <Property Name="Period_Is_Generated" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Relative">
+          <Key>
+            <PropertyRef Name="Relative_Id" />
+          </Key>
+          <Property Name="Relative_Id" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Relative_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Relative_Last_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Relative_Number" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Relative_Email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Relative_Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Responsible_Letter">
+          <Key>
+            <PropertyRef Name="Student_Id" />
+            <PropertyRef Name="Letter_Date" />
+          </Key>
+          <Property Name="Student_Id" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Letter_Date" Type="date" Nullable="false" />
+          <Property Name="COVID_19" Type="bit" Nullable="false" />
+          <Property Name="COVID_19_Relatives" Type="bit" Nullable="false" />
+          <Property Name="Cough" Type="bit" Nullable="false" />
+          <Property Name="Fever" Type="bit" Nullable="false" />
+          <Property Name="Fatigue" Type="bit" Nullable="false" />
+          <Property Name="Throat_Pain" Type="bit" Nullable="false" />
+          <Property Name="Nasal_Congestion" Type="bit" Nullable="false" />
+          <Property Name="Respiratory_Difficulty" Type="bit" Nullable="false" />
+          <Property Name="Diarrhea" Type="bit" Nullable="false" />
+          <Property Name="Cold_Symptoms" Type="bit" Nullable="false" />
+          <Property Name="Is_Signed" Type="bit" Nullable="false" />
+          <Property Name="Signed_Time" Type="datetime" />
+          <Property Name="Global_Attendance" Type="bit" Nullable="false" />
+          <Property Name="Relative_Id" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Role_Id" />
+          </Key>
+          <Property Name="Role_Id" Type="int" Nullable="false" />
+          <Property Name="Role_Key" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="Role_Description" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="School">
+          <Key>
+            <PropertyRef Name="School_Id" />
+          </Key>
+          <Property Name="School_Id" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="School_Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="School_Contact_Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="School_Email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="School_Number" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="School_RFC" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="School_Status" Type="bit" Nullable="false" />
+          <Property Name="School_Licence_Expiration" Type="date" Nullable="false" />
+          <Property Name="School_Letter_Required" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="School_Setup">
+          <Key>
+            <PropertyRef Name="School_Id" />
+          </Key>
+          <Property Name="School_Id" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="Max_Capacity" Type="int" Nullable="false" />
+          <Property Name="Last_Max_Capacity" Type="int" Nullable="false" />
+          <Property Name="School_Miss_Penalization" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Shift">
+          <Key>
+            <PropertyRef Name="Shift_Id" />
+          </Key>
+          <Property Name="Shift_Id" Type="int" Nullable="false" />
+          <Property Name="Shift_Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="Staff_Id" />
+          </Key>
+          <Property Name="Staff_Id" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Staff_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Staff_Last_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Staff_Email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Staff_Status" Type="bit" Nullable="false" />
+          <Property Name="School_Id" Type="varchar" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Staff_Lesson">
+          <Key>
+            <PropertyRef Name="Lesson_Id" />
+            <PropertyRef Name="Staff_Id" />
+          </Key>
+          <Property Name="Lesson_Id" Type="int" Nullable="false" />
+          <Property Name="Staff_Id" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Student_Id" />
+          </Key>
+          <Property Name="Student_Id" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Student_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Student_Last_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Student_Available" Type="bit" Nullable="false" />
+          <Property Name="Student_Status" Type="bit" Nullable="false" />
+          <Property Name="Student_Sex" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Student_Photo" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="School_Id" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="Shift_Id" Type="int" Nullable="false" />
+          <Property Name="Grade_Id" Type="int" Nullable="false" />
+          <Property Name="Index_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student_Relative">
+          <Key>
+            <PropertyRef Name="Relative_Id" />
+            <PropertyRef Name="Student_Id" />
+          </Key>
+          <Property Name="Relative_Id" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Student_Id" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Relation" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="User_Id" />
+          </Key>
+          <Property Name="User_Id" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="User_Password" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="User_Last_Login" Type="datetime" Nullable="false" />
+          <Property Name="User_Created" Type="datetime" Nullable="false" />
+          <Property Name="Role_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="announce_setup_announce_announce_id">
+          <End Role="Announce" Type="Self.Announce" Multiplicity="1" />
+          <End Role="Announce_Setup" Type="Self.Announce_Setup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Announce">
+              <PropertyRef Name="Announce_Id" />
+            </Principal>
+            <Dependent Role="Announce_Setup">
+              <PropertyRef Name="Announce_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="announce_setup_group_group_id">
+          <End Role="Group" Type="Self.Group" Multiplicity="1" />
+          <End Role="Announce_Setup" Type="Self.Announce_Setup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="Group_Id" />
+            </Principal>
+            <Dependent Role="Announce_Setup">
+              <PropertyRef Name="Group_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="class_attendance_detail_class_attendance_attendance_id">
+          <End Role="Class_Attendance" Type="Self.Class_Attendance" Multiplicity="1" />
+          <End Role="Class_Attendance_Detail" Type="Self.Class_Attendance_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class_Attendance">
+              <PropertyRef Name="Attendance_Id" />
+            </Principal>
+            <Dependent Role="Class_Attendance_Detail">
+              <PropertyRef Name="Attendance_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="class_attendance_detail_student_student_id">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Class_Attendance_Detail" Type="Self.Class_Attendance_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Student_Id" />
+            </Principal>
+            <Dependent Role="Class_Attendance_Detail">
+              <PropertyRef Name="Student_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="class_attendance_group_group_id">
+          <End Role="Group" Type="Self.Group" Multiplicity="1" />
+          <End Role="Class_Attendance" Type="Self.Class_Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="Group_Id" />
+            </Principal>
+            <Dependent Role="Class_Attendance">
+              <PropertyRef Name="Group_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="class_attendance_lesson_lesson_id">
+          <End Role="Lesson" Type="Self.Lesson" Multiplicity="1" />
+          <End Role="Class_Attendance" Type="Self.Class_Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lesson">
+              <PropertyRef Name="Lesson_Id" />
+            </Principal>
+            <Dependent Role="Class_Attendance">
+              <PropertyRef Name="Lesson_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="class_attendance_staff_staff_id">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+          <End Role="Class_Attendance" Type="Self.Class_Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="Staff_Id" />
+            </Principal>
+            <Dependent Role="Class_Attendance">
+              <PropertyRef Name="Staff_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="group_attendance_group_group_id">
+          <End Role="Group" Type="Self.Group" Multiplicity="1" />
+          <End Role="Group_Attendance" Type="Self.Group_Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="Group_Id" />
+            </Principal>
+            <Dependent Role="Group_Attendance">
+              <PropertyRef Name="Group_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="group_grade_grade_id">
+          <End Role="Grade" Type="Self.Grade" Multiplicity="1" />
+          <End Role="Group" Type="Self.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grade">
+              <PropertyRef Name="Grade_Id" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="Grade_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="group_index_index_id">
+          <End Role="Index" Type="Self.Index" Multiplicity="1" />
+          <End Role="Group" Type="Self.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Index">
+              <PropertyRef Name="Index_Id" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="Index_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="group_list_group_group_id">
+          <End Role="Group" Type="Self.Group" Multiplicity="1" />
+          <End Role="Group_List" Type="Self.Group_List" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="Group_Id" />
+            </Principal>
+            <Dependent Role="Group_List">
+              <PropertyRef Name="Group_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="group_list_student_student_id">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Group_List" Type="Self.Group_List" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Student_Id" />
+            </Principal>
+            <Dependent Role="Group_List">
+              <PropertyRef Name="Student_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="group_period_period_id">
+          <End Role="Period" Type="Self.Period" Multiplicity="1" />
+          <End Role="Group" Type="Self.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Period">
+              <PropertyRef Name="Period_Id" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="Period_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="group_shift_shift_id">
+          <End Role="Shift" Type="Self.Shift" Multiplicity="1" />
+          <End Role="Group" Type="Self.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shift">
+              <PropertyRef Name="Shift_Id" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="Shift_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="responsible_letter_relative_relative_id">
+          <End Role="Relative" Type="Self.Relative" Multiplicity="1" />
+          <End Role="Responsible_Letter" Type="Self.Responsible_Letter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Relative">
+              <PropertyRef Name="Relative_Id" />
+            </Principal>
+            <Dependent Role="Responsible_Letter">
+              <PropertyRef Name="Relative_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="responsible_letter_student_student_id">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Responsible_Letter" Type="Self.Responsible_Letter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Student_Id" />
+            </Principal>
+            <Dependent Role="Responsible_Letter">
+              <PropertyRef Name="Student_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="school_setup_school_school_id">
+          <End Role="School" Type="Self.School" Multiplicity="1" />
+          <End Role="School_Setup" Type="Self.School_Setup" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="School_Id" />
+            </Principal>
+            <Dependent Role="School_Setup">
+              <PropertyRef Name="School_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="staff_lesson_lesson_lesson_id">
+          <End Role="Lesson" Type="Self.Lesson" Multiplicity="1" />
+          <End Role="Staff_Lesson" Type="Self.Staff_Lesson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lesson">
+              <PropertyRef Name="Lesson_Id" />
+            </Principal>
+            <Dependent Role="Staff_Lesson">
+              <PropertyRef Name="Lesson_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="staff_lesson_staff_staff_id">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+          <End Role="Staff_Lesson" Type="Self.Staff_Lesson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="Staff_Id" />
+            </Principal>
+            <Dependent Role="Staff_Lesson">
+              <PropertyRef Name="Staff_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="staff_school_school_id">
+          <End Role="School" Type="Self.School" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="School_Id" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="School_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="student_grade_grade_id">
+          <End Role="Grade" Type="Self.Grade" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grade">
+              <PropertyRef Name="Grade_Id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="Grade_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="student_index_index_id">
+          <End Role="Index" Type="Self.Index" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Index">
+              <PropertyRef Name="Index_Id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="Index_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="student_relative_relative_relative_id">
+          <End Role="Relative" Type="Self.Relative" Multiplicity="1" />
+          <End Role="Student_Relative" Type="Self.Student_Relative" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Relative">
+              <PropertyRef Name="Relative_Id" />
+            </Principal>
+            <Dependent Role="Student_Relative">
+              <PropertyRef Name="Relative_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="student_relative_student_student_id">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Student_Relative" Type="Self.Student_Relative" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Student_Id" />
+            </Principal>
+            <Dependent Role="Student_Relative">
+              <PropertyRef Name="Student_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="student_school_school_id">
+          <End Role="School" Type="Self.School" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="School_Id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="School_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="student_shift_shift_id">
+          <End Role="Shift" Type="Self.Shift" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shift">
+              <PropertyRef Name="Shift_Id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="Shift_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_role_role_id">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Role_Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Role_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="schoolModelStoreContainer">
+          <EntitySet Name="Announce" EntityType="Self.Announce" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Announce_Setup" EntityType="Self.Announce_Setup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Class_Attendance" EntityType="Self.Class_Attendance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Class_Attendance_Detail" EntityType="Self.Class_Attendance_Detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grade" EntityType="Self.Grade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Group" EntityType="Self.Group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Group_Attendance" EntityType="Self.Group_Attendance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Group_List" EntityType="Self.Group_List" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Index" EntityType="Self.Index" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lesson" EntityType="Self.Lesson" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Period" EntityType="Self.Period" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Relative" EntityType="Self.Relative" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Responsible_Letter" EntityType="Self.Responsible_Letter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="School" EntityType="Self.School" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="School_Setup" EntityType="Self.School_Setup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shift" EntityType="Self.Shift" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staff_Lesson" EntityType="Self.Staff_Lesson" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student_Relative" EntityType="Self.Student_Relative" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="announce_setup_announce_announce_id" Association="Self.announce_setup_announce_announce_id">
+            <End Role="Announce" EntitySet="Announce" />
+            <End Role="Announce_Setup" EntitySet="Announce_Setup" />
+          </AssociationSet>
+          <AssociationSet Name="announce_setup_group_group_id" Association="Self.announce_setup_group_group_id">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="Announce_Setup" EntitySet="Announce_Setup" />
+          </AssociationSet>
+          <AssociationSet Name="class_attendance_detail_class_attendance_attendance_id" Association="Self.class_attendance_detail_class_attendance_attendance_id">
+            <End Role="Class_Attendance" EntitySet="Class_Attendance" />
+            <End Role="Class_Attendance_Detail" EntitySet="Class_Attendance_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="class_attendance_detail_student_student_id" Association="Self.class_attendance_detail_student_student_id">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Class_Attendance_Detail" EntitySet="Class_Attendance_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="class_attendance_group_group_id" Association="Self.class_attendance_group_group_id">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="Class_Attendance" EntitySet="Class_Attendance" />
+          </AssociationSet>
+          <AssociationSet Name="class_attendance_lesson_lesson_id" Association="Self.class_attendance_lesson_lesson_id">
+            <End Role="Lesson" EntitySet="Lesson" />
+            <End Role="Class_Attendance" EntitySet="Class_Attendance" />
+          </AssociationSet>
+          <AssociationSet Name="class_attendance_staff_staff_id" Association="Self.class_attendance_staff_staff_id">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Class_Attendance" EntitySet="Class_Attendance" />
+          </AssociationSet>
+          <AssociationSet Name="group_attendance_group_group_id" Association="Self.group_attendance_group_group_id">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="Group_Attendance" EntitySet="Group_Attendance" />
+          </AssociationSet>
+          <AssociationSet Name="group_grade_grade_id" Association="Self.group_grade_grade_id">
+            <End Role="Grade" EntitySet="Grade" />
+            <End Role="Group" EntitySet="Group" />
+          </AssociationSet>
+          <AssociationSet Name="group_index_index_id" Association="Self.group_index_index_id">
+            <End Role="Index" EntitySet="Index" />
+            <End Role="Group" EntitySet="Group" />
+          </AssociationSet>
+          <AssociationSet Name="group_list_group_group_id" Association="Self.group_list_group_group_id">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="Group_List" EntitySet="Group_List" />
+          </AssociationSet>
+          <AssociationSet Name="group_list_student_student_id" Association="Self.group_list_student_student_id">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Group_List" EntitySet="Group_List" />
+          </AssociationSet>
+          <AssociationSet Name="group_period_period_id" Association="Self.group_period_period_id">
+            <End Role="Period" EntitySet="Period" />
+            <End Role="Group" EntitySet="Group" />
+          </AssociationSet>
+          <AssociationSet Name="group_shift_shift_id" Association="Self.group_shift_shift_id">
+            <End Role="Shift" EntitySet="Shift" />
+            <End Role="Group" EntitySet="Group" />
+          </AssociationSet>
+          <AssociationSet Name="responsible_letter_relative_relative_id" Association="Self.responsible_letter_relative_relative_id">
+            <End Role="Relative" EntitySet="Relative" />
+            <End Role="Responsible_Letter" EntitySet="Responsible_Letter" />
+          </AssociationSet>
+          <AssociationSet Name="responsible_letter_student_student_id" Association="Self.responsible_letter_student_student_id">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Responsible_Letter" EntitySet="Responsible_Letter" />
+          </AssociationSet>
+          <AssociationSet Name="school_setup_school_school_id" Association="Self.school_setup_school_school_id">
+            <End Role="School" EntitySet="School" />
+            <End Role="School_Setup" EntitySet="School_Setup" />
+          </AssociationSet>
+          <AssociationSet Name="staff_lesson_lesson_lesson_id" Association="Self.staff_lesson_lesson_lesson_id">
+            <End Role="Lesson" EntitySet="Lesson" />
+            <End Role="Staff_Lesson" EntitySet="Staff_Lesson" />
+          </AssociationSet>
+          <AssociationSet Name="staff_lesson_staff_staff_id" Association="Self.staff_lesson_staff_staff_id">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Staff_Lesson" EntitySet="Staff_Lesson" />
+          </AssociationSet>
+          <AssociationSet Name="staff_school_school_id" Association="Self.staff_school_school_id">
+            <End Role="School" EntitySet="School" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="student_grade_grade_id" Association="Self.student_grade_grade_id">
+            <End Role="Grade" EntitySet="Grade" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="student_index_index_id" Association="Self.student_index_index_id">
+            <End Role="Index" EntitySet="Index" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="student_relative_relative_relative_id" Association="Self.student_relative_relative_relative_id">
+            <End Role="Relative" EntitySet="Relative" />
+            <End Role="Student_Relative" EntitySet="Student_Relative" />
+          </AssociationSet>
+          <AssociationSet Name="student_relative_student_student_id" Association="Self.student_relative_student_student_id">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Student_Relative" EntitySet="Student_Relative" />
+          </AssociationSet>
+          <AssociationSet Name="student_school_school_id" Association="Self.student_school_school_id">
+            <End Role="School" EntitySet="School" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="student_shift_shift_id" Association="Self.student_shift_shift_id">
+            <End Role="Shift" EntitySet="Shift" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="user_role_role_id" Association="Self.user_role_role_id">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="schoolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Announce">
+          <Key>
+            <PropertyRef Name="Announce_Id" />
+          </Key>
+          <Property Name="Announce_Id" Type="Int32" Nullable="false" />
+          <Property Name="Announce_Creation" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Announce_Expiration" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Announce_Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Groups" Relationship="Self.Announce_Setup" FromRole="Announce" ToRole="Group" />
+        </EntityType>
+        <EntityType Name="Class_Attendance">
+          <Key>
+            <PropertyRef Name="Attendance_Id" />
+          </Key>
+          <Property Name="Attendance_Id" Type="Int32" Nullable="false" />
+          <Property Name="Attendance_Topic" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Attendance_Start_Time" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Attendance_End_Time" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Attendance_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Staff_Id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Lesson_Id" Type="Int32" Nullable="false" />
+          <Property Name="Group_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Class_Attendance_Detail" Relationship="Self.class_attendance_detail_class_attendance_attendance_id" FromRole="Class_Attendance" ToRole="Class_Attendance_Detail" />
+          <NavigationProperty Name="Group" Relationship="Self.class_attendance_group_group_id" FromRole="Class_Attendance" ToRole="Group" />
+          <NavigationProperty Name="Lesson" Relationship="Self.class_attendance_lesson_lesson_id" FromRole="Class_Attendance" ToRole="Lesson" />
+          <NavigationProperty Name="Staff" Relationship="Self.class_attendance_staff_staff_id" FromRole="Class_Attendance" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="Class_Attendance_Detail">
+          <Key>
+            <PropertyRef Name="Student_Id" />
+            <PropertyRef Name="Attendance_Id" />
+          </Key>
+          <Property Name="Student_Id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Attendance_Id" Type="Int32" Nullable="false" />
+          <Property Name="Attend" Type="Boolean" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Class_Attendance" Relationship="Self.class_attendance_detail_class_attendance_attendance_id" FromRole="Class_Attendance_Detail" ToRole="Class_Attendance" />
+          <NavigationProperty Name="Student" Relationship="Self.class_attendance_detail_student_student_id" FromRole="Class_Attendance_Detail" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Grade">
+          <Key>
+            <PropertyRef Name="Grade_Id" />
+          </Key>
+          <Property Name="Grade_Id" Type="Int32" Nullable="false" />
+          <Property Name="Grade_Consecutive_Order" Type="Int32" Nullable="false" />
+          <Property Name="Grade_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Groups" Relationship="Self.group_grade_grade_id" FromRole="Grade" ToRole="Group" />
+          <NavigationProperty Name="Students" Relationship="Self.student_grade_grade_id" FromRole="Grade" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="Group_Id" />
+          </Key>
+          <Property Name="Group_Id" Type="Int32" Nullable="false" />
+          <Property Name="Group_Order" Type="Int32" Nullable="false" />
+          <Property Name="Period_Id" Type="Int32" Nullable="false" />
+          <Property Name="Shift_Id" Type="Int32" Nullable="false" />
+          <Property Name="Grade_Id" Type="Int32" Nullable="false" />
+          <Property Name="Index_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Class_Attendance" Relationship="Self.class_attendance_group_group_id" FromRole="Group" ToRole="Class_Attendance" />
+          <NavigationProperty Name="Grade" Relationship="Self.group_grade_grade_id" FromRole="Group" ToRole="Grade" />
+          <NavigationProperty Name="Group_Attendance" Relationship="Self.group_attendance_group_group_id" FromRole="Group" ToRole="Group_Attendance" />
+          <NavigationProperty Name="Index" Relationship="Self.group_index_index_id" FromRole="Group" ToRole="Index" />
+          <NavigationProperty Name="Period" Relationship="Self.group_period_period_id" FromRole="Group" ToRole="Period" />
+          <NavigationProperty Name="Shift" Relationship="Self.group_shift_shift_id" FromRole="Group" ToRole="Shift" />
+          <NavigationProperty Name="Announces" Relationship="Self.Announce_Setup" FromRole="Group" ToRole="Announce" />
+          <NavigationProperty Name="Students" Relationship="Self.Group_List" FromRole="Group" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Group_Attendance">
+          <Key>
+            <PropertyRef Name="Group_Id" />
+            <PropertyRef Name="Group_Date" />
+          </Key>
+          <Property Name="Group_Id" Type="Int32" Nullable="false" />
+          <Property Name="Group_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Group" Relationship="Self.group_attendance_group_group_id" FromRole="Group_Attendance" ToRole="Group" />
+        </EntityType>
+        <EntityType Name="Index">
+          <Key>
+            <PropertyRef Name="Index_Id" />
+          </Key>
+          <Property Name="Index_Id" Type="Int32" Nullable="false" />
+          <Property Name="Index_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Groups" Relationship="Self.group_index_index_id" FromRole="Index" ToRole="Group" />
+          <NavigationProperty Name="Students" Relationship="Self.student_index_index_id" FromRole="Index" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Lesson">
+          <Key>
+            <PropertyRef Name="Lesson_Id" />
+          </Key>
+          <Property Name="Lesson_Id" Type="Int32" Nullable="false" />
+          <Property Name="Lesson_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Lesson_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Class_Attendance" Relationship="Self.class_attendance_lesson_lesson_id" FromRole="Lesson" ToRole="Class_Attendance" />
+          <NavigationProperty Name="Staffs" Relationship="Self.Staff_Lesson" FromRole="Lesson" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="Period">
+          <Key>
+            <PropertyRef Name="Period_Id" />
+          </Key>
+          <Property Name="Period_Id" Type="Int32" Nullable="false" />
+          <Property Name="Period_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Period_Start_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Period_End_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Period_Is_Generated" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Groups" Relationship="Self.group_period_period_id" FromRole="Period" ToRole="Group" />
+        </EntityType>
+        <EntityType Name="Relative">
+          <Key>
+            <PropertyRef Name="Relative_Id" />
+          </Key>
+          <Property Name="Relative_Id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Relative_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Relative_Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Relative_Number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Relative_Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Relative_Status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Responsible_Letter" Relationship="Self.responsible_letter_relative_relative_id" FromRole="Relative" ToRole="Responsible_Letter" />
+          <NavigationProperty Name="Student_Relative" Relationship="Self.student_relative_relative_relative_id" FromRole="Relative" ToRole="Student_Relative" />
+        </EntityType>
+        <EntityType Name="Responsible_Letter">
+          <Key>
+            <PropertyRef Name="Student_Id" />
+            <PropertyRef Name="Letter_Date" />
+          </Key>
+          <Property Name="Student_Id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Letter_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="COVID_19" Type="Boolean" Nullable="false" />
+          <Property Name="COVID_19_Relatives" Type="Boolean" Nullable="false" />
+          <Property Name="Cough" Type="Boolean" Nullable="false" />
+          <Property Name="Fever" Type="Boolean" Nullable="false" />
+          <Property Name="Fatigue" Type="Boolean" Nullable="false" />
+          <Property Name="Throat_Pain" Type="Boolean" Nullable="false" />
+          <Property Name="Nasal_Congestion" Type="Boolean" Nullable="false" />
+          <Property Name="Respiratory_Difficulty" Type="Boolean" Nullable="false" />
+          <Property Name="Diarrhea" Type="Boolean" Nullable="false" />
+          <Property Name="Cold_Symptoms" Type="Boolean" Nullable="false" />
+          <Property Name="Is_Signed" Type="Boolean" Nullable="false" />
+          <Property Name="Signed_Time" Type="DateTime" Precision="3" />
+          <Property Name="Global_Attendance" Type="Boolean" Nullable="false" />
+          <Property Name="Relative_Id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Relative" Relationship="Self.responsible_letter_relative_relative_id" FromRole="Responsible_Letter" ToRole="Relative" />
+          <NavigationProperty Name="Student" Relationship="Self.responsible_letter_student_student_id" FromRole="Responsible_Letter" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Role_Id" />
+          </Key>
+          <Property Name="Role_Id" Type="Int32" Nullable="false" />
+          <Property Name="Role_Key" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Role_Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.user_role_role_id" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="School">
+          <Key>
+            <PropertyRef Name="School_Id" />
+          </Key>
+          <Property Name="School_Id" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="School_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="School_Contact_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="School_Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="School_Number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="School_RFC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="School_Status" Type="Boolean" Nullable="false" />
+          <Property Name="School_Licence_Expiration" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="School_Letter_Required" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="School_Setup" Relationship="Self.school_setup_school_school_id" FromRole="School" ToRole="School_Setup" />
+          <NavigationProperty Name="Staffs" Relationship="Self.staff_school_school_id" FromRole="School" ToRole="Staff" />
+          <NavigationProperty Name="Students" Relationship="Self.student_school_school_id" FromRole="School" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="School_Setup">
+          <Key>
+            <PropertyRef Name="School_Id" />
+          </Key>
+          <Property Name="School_Id" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Max_Capacity" Type="Int32" Nullable="false" />
+          <Property Name="Last_Max_Capacity" Type="Int32" Nullable="false" />
+          <Property Name="School_Miss_Penalization" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="School" Relationship="Self.school_setup_school_school_id" FromRole="School_Setup" ToRole="School" />
+        </EntityType>
+        <EntityType Name="Shift">
+          <Key>
+            <PropertyRef Name="Shift_Id" />
+          </Key>
+          <Property Name="Shift_Id" Type="Int32" Nullable="false" />
+          <Property Name="Shift_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Groups" Relationship="Self.group_shift_shift_id" FromRole="Shift" ToRole="Group" />
+          <NavigationProperty Name="Students" Relationship="Self.student_shift_shift_id" FromRole="Shift" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="Staff_Id" />
+          </Key>
+          <Property Name="Staff_Id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Staff_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Staff_Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Staff_Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Staff_Status" Type="Boolean" Nullable="false" />
+          <Property Name="School_Id" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Class_Attendance" Relationship="Self.class_attendance_staff_staff_id" FromRole="Staff" ToRole="Class_Attendance" />
+          <NavigationProperty Name="School" Relationship="Self.staff_school_school_id" FromRole="Staff" ToRole="School" />
+          <NavigationProperty Name="Lessons" Relationship="Self.Staff_Lesson" FromRole="Staff" ToRole="Lesson" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Student_Id" />
+          </Key>
+          <Property Name="Student_Id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Student_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Student_Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Student_Available" Type="Boolean" Nullable="false" />
+          <Property Name="Student_Status" Type="Boolean" Nullable="false" />
+          <Property Name="Student_Sex" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Student_Photo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="School_Id" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Shift_Id" Type="Int32" Nullable="false" />
+          <Property Name="Grade_Id" Type="Int32" Nullable="false" />
+          <Property Name="Index_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Class_Attendance_Detail" Relationship="Self.class_attendance_detail_student_student_id" FromRole="Student" ToRole="Class_Attendance_Detail" />
+          <NavigationProperty Name="Grade" Relationship="Self.student_grade_grade_id" FromRole="Student" ToRole="Grade" />
+          <NavigationProperty Name="Index" Relationship="Self.student_index_index_id" FromRole="Student" ToRole="Index" />
+          <NavigationProperty Name="Responsible_Letter" Relationship="Self.responsible_letter_student_student_id" FromRole="Student" ToRole="Responsible_Letter" />
+          <NavigationProperty Name="School" Relationship="Self.student_school_school_id" FromRole="Student" ToRole="School" />
+          <NavigationProperty Name="Shift" Relationship="Self.student_shift_shift_id" FromRole="Student" ToRole="Shift" />
+          <NavigationProperty Name="Student_Relative" Relationship="Self.student_relative_student_student_id" FromRole="Student" ToRole="Student_Relative" />
+          <NavigationProperty Name="Groups" Relationship="Self.Group_List" FromRole="Student" ToRole="Group" />
+        </EntityType>
+        <EntityType Name="Student_Relative">
+          <Key>
+            <PropertyRef Name="Relative_Id" />
+            <PropertyRef Name="Student_Id" />
+          </Key>
+          <Property Name="Relative_Id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Student_Id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Relation" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Relative" Relationship="Self.student_relative_relative_relative_id" FromRole="Student_Relative" ToRole="Relative" />
+          <NavigationProperty Name="Student" Relationship="Self.student_relative_student_student_id" FromRole="Student_Relative" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="User_Id" />
+          </Key>
+          <Property Name="User_Id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="User_Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="User_Last_Login" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="User_Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Role_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="Self.user_role_role_id" FromRole="User" ToRole="Role" />
+        </EntityType>
+        <Association Name="class_attendance_detail_class_attendance_attendance_id">
+          <End Role="Class_Attendance" Type="Self.Class_Attendance" Multiplicity="1" />
+          <End Role="Class_Attendance_Detail" Type="Self.Class_Attendance_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class_Attendance">
+              <PropertyRef Name="Attendance_Id" />
+            </Principal>
+            <Dependent Role="Class_Attendance_Detail">
+              <PropertyRef Name="Attendance_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="class_attendance_group_group_id">
+          <End Role="Group" Type="Self.Group" Multiplicity="1" />
+          <End Role="Class_Attendance" Type="Self.Class_Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="Group_Id" />
+            </Principal>
+            <Dependent Role="Class_Attendance">
+              <PropertyRef Name="Group_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="class_attendance_lesson_lesson_id">
+          <End Role="Lesson" Type="Self.Lesson" Multiplicity="1" />
+          <End Role="Class_Attendance" Type="Self.Class_Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lesson">
+              <PropertyRef Name="Lesson_Id" />
+            </Principal>
+            <Dependent Role="Class_Attendance">
+              <PropertyRef Name="Lesson_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="class_attendance_staff_staff_id">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+          <End Role="Class_Attendance" Type="Self.Class_Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="Staff_Id" />
+            </Principal>
+            <Dependent Role="Class_Attendance">
+              <PropertyRef Name="Staff_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="class_attendance_detail_student_student_id">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Class_Attendance_Detail" Type="Self.Class_Attendance_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Student_Id" />
+            </Principal>
+            <Dependent Role="Class_Attendance_Detail">
+              <PropertyRef Name="Student_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="group_grade_grade_id">
+          <End Role="Grade" Type="Self.Grade" Multiplicity="1" />
+          <End Role="Group" Type="Self.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grade">
+              <PropertyRef Name="Grade_Id" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="Grade_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="student_grade_grade_id">
+          <End Role="Grade" Type="Self.Grade" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grade">
+              <PropertyRef Name="Grade_Id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="Grade_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="group_attendance_group_group_id">
+          <End Role="Group" Type="Self.Group" Multiplicity="1" />
+          <End Role="Group_Attendance" Type="Self.Group_Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="Group_Id" />
+            </Principal>
+            <Dependent Role="Group_Attendance">
+              <PropertyRef Name="Group_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="group_index_index_id">
+          <End Role="Index" Type="Self.Index" Multiplicity="1" />
+          <End Role="Group" Type="Self.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Index">
+              <PropertyRef Name="Index_Id" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="Index_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="group_period_period_id">
+          <End Role="Period" Type="Self.Period" Multiplicity="1" />
+          <End Role="Group" Type="Self.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Period">
+              <PropertyRef Name="Period_Id" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="Period_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="group_shift_shift_id">
+          <End Role="Shift" Type="Self.Shift" Multiplicity="1" />
+          <End Role="Group" Type="Self.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shift">
+              <PropertyRef Name="Shift_Id" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="Shift_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="student_index_index_id">
+          <End Role="Index" Type="Self.Index" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Index">
+              <PropertyRef Name="Index_Id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="Index_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="responsible_letter_relative_relative_id">
+          <End Role="Relative" Type="Self.Relative" Multiplicity="1" />
+          <End Role="Responsible_Letter" Type="Self.Responsible_Letter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Relative">
+              <PropertyRef Name="Relative_Id" />
+            </Principal>
+            <Dependent Role="Responsible_Letter">
+              <PropertyRef Name="Relative_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="student_relative_relative_relative_id">
+          <End Role="Relative" Type="Self.Relative" Multiplicity="1" />
+          <End Role="Student_Relative" Type="Self.Student_Relative" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Relative">
+              <PropertyRef Name="Relative_Id" />
+            </Principal>
+            <Dependent Role="Student_Relative">
+              <PropertyRef Name="Relative_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="responsible_letter_student_student_id">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Responsible_Letter" Type="Self.Responsible_Letter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Student_Id" />
+            </Principal>
+            <Dependent Role="Responsible_Letter">
+              <PropertyRef Name="Student_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_role_role_id">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Role_Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Role_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="school_setup_school_school_id">
+          <End Role="School" Type="Self.School" Multiplicity="1" />
+          <End Role="School_Setup" Type="Self.School_Setup" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="School_Id" />
+            </Principal>
+            <Dependent Role="School_Setup">
+              <PropertyRef Name="School_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="staff_school_school_id">
+          <End Role="School" Type="Self.School" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="School_Id" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="School_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="student_school_school_id">
+          <End Role="School" Type="Self.School" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="School_Id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="School_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="student_shift_shift_id">
+          <End Role="Shift" Type="Self.Shift" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shift">
+              <PropertyRef Name="Shift_Id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="Shift_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="student_relative_student_student_id">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Student_Relative" Type="Self.Student_Relative" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Student_Id" />
+            </Principal>
+            <Dependent Role="Student_Relative">
+              <PropertyRef Name="Student_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Announce_Setup">
+          <End Role="Announce" Type="Self.Announce" Multiplicity="*" />
+          <End Role="Group" Type="Self.Group" Multiplicity="*" />
+        </Association>
+        <Association Name="Group_List">
+          <End Role="Group" Type="Self.Group" Multiplicity="*" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+        </Association>
+        <Association Name="Staff_Lesson">
+          <End Role="Lesson" Type="Self.Lesson" Multiplicity="*" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="DBschool" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Announces" EntityType="Self.Announce" />
+          <EntitySet Name="Class_Attendance" EntityType="Self.Class_Attendance" />
+          <EntitySet Name="Class_Attendance_Detail" EntityType="Self.Class_Attendance_Detail" />
+          <EntitySet Name="Grades" EntityType="Self.Grade" />
+          <EntitySet Name="Groups" EntityType="Self.Group" />
+          <EntitySet Name="Group_Attendance" EntityType="Self.Group_Attendance" />
+          <EntitySet Name="Indices" EntityType="Self.Index" />
+          <EntitySet Name="Lessons" EntityType="Self.Lesson" />
+          <EntitySet Name="Periods" EntityType="Self.Period" />
+          <EntitySet Name="Relatives" EntityType="Self.Relative" />
+          <EntitySet Name="Responsible_Letter" EntityType="Self.Responsible_Letter" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Schools" EntityType="Self.School" />
+          <EntitySet Name="School_Setup" EntityType="Self.School_Setup" />
+          <EntitySet Name="Shifts" EntityType="Self.Shift" />
+          <EntitySet Name="Staffs" EntityType="Self.Staff" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="Student_Relative" EntityType="Self.Student_Relative" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="class_attendance_detail_class_attendance_attendance_id" Association="Self.class_attendance_detail_class_attendance_attendance_id">
+            <End Role="Class_Attendance" EntitySet="Class_Attendance" />
+            <End Role="Class_Attendance_Detail" EntitySet="Class_Attendance_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="class_attendance_group_group_id" Association="Self.class_attendance_group_group_id">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="Class_Attendance" EntitySet="Class_Attendance" />
+          </AssociationSet>
+          <AssociationSet Name="class_attendance_lesson_lesson_id" Association="Self.class_attendance_lesson_lesson_id">
+            <End Role="Lesson" EntitySet="Lessons" />
+            <End Role="Class_Attendance" EntitySet="Class_Attendance" />
+          </AssociationSet>
+          <AssociationSet Name="class_attendance_staff_staff_id" Association="Self.class_attendance_staff_staff_id">
+            <End Role="Staff" EntitySet="Staffs" />
+            <End Role="Class_Attendance" EntitySet="Class_Attendance" />
+          </AssociationSet>
+          <AssociationSet Name="class_attendance_detail_student_student_id" Association="Self.class_attendance_detail_student_student_id">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Class_Attendance_Detail" EntitySet="Class_Attendance_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="group_grade_grade_id" Association="Self.group_grade_grade_id">
+            <End Role="Grade" EntitySet="Grades" />
+            <End Role="Group" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="student_grade_grade_id" Association="Self.student_grade_grade_id">
+            <End Role="Grade" EntitySet="Grades" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="group_attendance_group_group_id" Association="Self.group_attendance_group_group_id">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="Group_Attendance" EntitySet="Group_Attendance" />
+          </AssociationSet>
+          <AssociationSet Name="group_index_index_id" Association="Self.group_index_index_id">
+            <End Role="Index" EntitySet="Indices" />
+            <End Role="Group" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="group_period_period_id" Association="Self.group_period_period_id">
+            <End Role="Period" EntitySet="Periods" />
+            <End Role="Group" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="group_shift_shift_id" Association="Self.group_shift_shift_id">
+            <End Role="Shift" EntitySet="Shifts" />
+            <End Role="Group" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="student_index_index_id" Association="Self.student_index_index_id">
+            <End Role="Index" EntitySet="Indices" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="responsible_letter_relative_relative_id" Association="Self.responsible_letter_relative_relative_id">
+            <End Role="Relative" EntitySet="Relatives" />
+            <End Role="Responsible_Letter" EntitySet="Responsible_Letter" />
+          </AssociationSet>
+          <AssociationSet Name="student_relative_relative_relative_id" Association="Self.student_relative_relative_relative_id">
+            <End Role="Relative" EntitySet="Relatives" />
+            <End Role="Student_Relative" EntitySet="Student_Relative" />
+          </AssociationSet>
+          <AssociationSet Name="responsible_letter_student_student_id" Association="Self.responsible_letter_student_student_id">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Responsible_Letter" EntitySet="Responsible_Letter" />
+          </AssociationSet>
+          <AssociationSet Name="user_role_role_id" Association="Self.user_role_role_id">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="school_setup_school_school_id" Association="Self.school_setup_school_school_id">
+            <End Role="School" EntitySet="Schools" />
+            <End Role="School_Setup" EntitySet="School_Setup" />
+          </AssociationSet>
+          <AssociationSet Name="staff_school_school_id" Association="Self.staff_school_school_id">
+            <End Role="School" EntitySet="Schools" />
+            <End Role="Staff" EntitySet="Staffs" />
+          </AssociationSet>
+          <AssociationSet Name="student_school_school_id" Association="Self.student_school_school_id">
+            <End Role="School" EntitySet="Schools" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="student_shift_shift_id" Association="Self.student_shift_shift_id">
+            <End Role="Shift" EntitySet="Shifts" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="student_relative_student_student_id" Association="Self.student_relative_student_student_id">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Student_Relative" EntitySet="Student_Relative" />
+          </AssociationSet>
+          <AssociationSet Name="Announce_Setup" Association="Self.Announce_Setup">
+            <End Role="Announce" EntitySet="Announces" />
+            <End Role="Group" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="Group_List" Association="Self.Group_List">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="Staff_Lesson" Association="Self.Staff_Lesson">
+            <End Role="Lesson" EntitySet="Lessons" />
+            <End Role="Staff" EntitySet="Staffs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="schoolModelStoreContainer" CdmEntityContainer="DBschool">
+          <EntitySetMapping Name="Announces">
+            <EntityTypeMapping TypeName="schoolModel.Announce">
+              <MappingFragment StoreEntitySet="Announce">
+                <ScalarProperty Name="Announce_Id" ColumnName="Announce_Id" />
+                <ScalarProperty Name="Announce_Creation" ColumnName="Announce_Creation" />
+                <ScalarProperty Name="Announce_Expiration" ColumnName="Announce_Expiration" />
+                <ScalarProperty Name="Announce_Message" ColumnName="Announce_Message" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Class_Attendance">
+            <EntityTypeMapping TypeName="schoolModel.Class_Attendance">
+              <MappingFragment StoreEntitySet="Class_Attendance">
+                <ScalarProperty Name="Attendance_Id" ColumnName="Attendance_Id" />
+                <ScalarProperty Name="Attendance_Topic" ColumnName="Attendance_Topic" />
+                <ScalarProperty Name="Attendance_Start_Time" ColumnName="Attendance_Start_Time" />
+                <ScalarProperty Name="Attendance_End_Time" ColumnName="Attendance_End_Time" />
+                <ScalarProperty Name="Attendance_Date" ColumnName="Attendance_Date" />
+                <ScalarProperty Name="Staff_Id" ColumnName="Staff_Id" />
+                <ScalarProperty Name="Lesson_Id" ColumnName="Lesson_Id" />
+                <ScalarProperty Name="Group_Id" ColumnName="Group_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Class_Attendance_Detail">
+            <EntityTypeMapping TypeName="schoolModel.Class_Attendance_Detail">
+              <MappingFragment StoreEntitySet="Class_Attendance_Detail">
+                <ScalarProperty Name="Student_Id" ColumnName="Student_Id" />
+                <ScalarProperty Name="Attendance_Id" ColumnName="Attendance_Id" />
+                <ScalarProperty Name="Attend" ColumnName="Attend" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grades">
+            <EntityTypeMapping TypeName="schoolModel.Grade">
+              <MappingFragment StoreEntitySet="Grade">
+                <ScalarProperty Name="Grade_Id" ColumnName="Grade_Id" />
+                <ScalarProperty Name="Grade_Consecutive_Order" ColumnName="Grade_Consecutive_Order" />
+                <ScalarProperty Name="Grade_Name" ColumnName="Grade_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Groups">
+            <EntityTypeMapping TypeName="schoolModel.Group">
+              <MappingFragment StoreEntitySet="Group">
+                <ScalarProperty Name="Group_Id" ColumnName="Group_Id" />
+                <ScalarProperty Name="Group_Order" ColumnName="Group_Order" />
+                <ScalarProperty Name="Period_Id" ColumnName="Period_Id" />
+                <ScalarProperty Name="Shift_Id" ColumnName="Shift_Id" />
+                <ScalarProperty Name="Grade_Id" ColumnName="Grade_Id" />
+                <ScalarProperty Name="Index_Id" ColumnName="Index_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Group_Attendance">
+            <EntityTypeMapping TypeName="schoolModel.Group_Attendance">
+              <MappingFragment StoreEntitySet="Group_Attendance">
+                <ScalarProperty Name="Group_Id" ColumnName="Group_Id" />
+                <ScalarProperty Name="Group_Date" ColumnName="Group_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Indices">
+            <EntityTypeMapping TypeName="schoolModel.Index">
+              <MappingFragment StoreEntitySet="Index">
+                <ScalarProperty Name="Index_Id" ColumnName="Index_Id" />
+                <ScalarProperty Name="Index_Name" ColumnName="Index_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lessons">
+            <EntityTypeMapping TypeName="schoolModel.Lesson">
+              <MappingFragment StoreEntitySet="Lesson">
+                <ScalarProperty Name="Lesson_Id" ColumnName="Lesson_Id" />
+                <ScalarProperty Name="Lesson_Name" ColumnName="Lesson_Name" />
+                <ScalarProperty Name="Lesson_Description" ColumnName="Lesson_Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Periods">
+            <EntityTypeMapping TypeName="schoolModel.Period">
+              <MappingFragment StoreEntitySet="Period">
+                <ScalarProperty Name="Period_Id" ColumnName="Period_Id" />
+                <ScalarProperty Name="Period_Description" ColumnName="Period_Description" />
+                <ScalarProperty Name="Period_Start_Date" ColumnName="Period_Start_Date" />
+                <ScalarProperty Name="Period_End_Date" ColumnName="Period_End_Date" />
+                <ScalarProperty Name="Period_Is_Generated" ColumnName="Period_Is_Generated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Relatives">
+            <EntityTypeMapping TypeName="schoolModel.Relative">
+              <MappingFragment StoreEntitySet="Relative">
+                <ScalarProperty Name="Relative_Id" ColumnName="Relative_Id" />
+                <ScalarProperty Name="Relative_Name" ColumnName="Relative_Name" />
+                <ScalarProperty Name="Relative_Last_Name" ColumnName="Relative_Last_Name" />
+                <ScalarProperty Name="Relative_Number" ColumnName="Relative_Number" />
+                <ScalarProperty Name="Relative_Email" ColumnName="Relative_Email" />
+                <ScalarProperty Name="Relative_Status" ColumnName="Relative_Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Responsible_Letter">
+            <EntityTypeMapping TypeName="schoolModel.Responsible_Letter">
+              <MappingFragment StoreEntitySet="Responsible_Letter">
+                <ScalarProperty Name="Student_Id" ColumnName="Student_Id" />
+                <ScalarProperty Name="Letter_Date" ColumnName="Letter_Date" />
+                <ScalarProperty Name="COVID_19" ColumnName="COVID_19" />
+                <ScalarProperty Name="COVID_19_Relatives" ColumnName="COVID_19_Relatives" />
+                <ScalarProperty Name="Cough" ColumnName="Cough" />
+                <ScalarProperty Name="Fever" ColumnName="Fever" />
+                <ScalarProperty Name="Fatigue" ColumnName="Fatigue" />
+                <ScalarProperty Name="Throat_Pain" ColumnName="Throat_Pain" />
+                <ScalarProperty Name="Nasal_Congestion" ColumnName="Nasal_Congestion" />
+                <ScalarProperty Name="Respiratory_Difficulty" ColumnName="Respiratory_Difficulty" />
+                <ScalarProperty Name="Diarrhea" ColumnName="Diarrhea" />
+                <ScalarProperty Name="Cold_Symptoms" ColumnName="Cold_Symptoms" />
+                <ScalarProperty Name="Is_Signed" ColumnName="Is_Signed" />
+                <ScalarProperty Name="Signed_Time" ColumnName="Signed_Time" />
+                <ScalarProperty Name="Global_Attendance" ColumnName="Global_Attendance" />
+                <ScalarProperty Name="Relative_Id" ColumnName="Relative_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="schoolModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+                <ScalarProperty Name="Role_Key" ColumnName="Role_Key" />
+                <ScalarProperty Name="Role_Description" ColumnName="Role_Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schools">
+            <EntityTypeMapping TypeName="schoolModel.School">
+              <MappingFragment StoreEntitySet="School">
+                <ScalarProperty Name="School_Id" ColumnName="School_Id" />
+                <ScalarProperty Name="School_Name" ColumnName="School_Name" />
+                <ScalarProperty Name="School_Contact_Name" ColumnName="School_Contact_Name" />
+                <ScalarProperty Name="School_Email" ColumnName="School_Email" />
+                <ScalarProperty Name="School_Number" ColumnName="School_Number" />
+                <ScalarProperty Name="School_RFC" ColumnName="School_RFC" />
+                <ScalarProperty Name="School_Status" ColumnName="School_Status" />
+                <ScalarProperty Name="School_Licence_Expiration" ColumnName="School_Licence_Expiration" />
+                <ScalarProperty Name="School_Letter_Required" ColumnName="School_Letter_Required" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="School_Setup">
+            <EntityTypeMapping TypeName="schoolModel.School_Setup">
+              <MappingFragment StoreEntitySet="School_Setup">
+                <ScalarProperty Name="School_Id" ColumnName="School_Id" />
+                <ScalarProperty Name="Max_Capacity" ColumnName="Max_Capacity" />
+                <ScalarProperty Name="Last_Max_Capacity" ColumnName="Last_Max_Capacity" />
+                <ScalarProperty Name="School_Miss_Penalization" ColumnName="School_Miss_Penalization" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shifts">
+            <EntityTypeMapping TypeName="schoolModel.Shift">
+              <MappingFragment StoreEntitySet="Shift">
+                <ScalarProperty Name="Shift_Id" ColumnName="Shift_Id" />
+                <ScalarProperty Name="Shift_Name" ColumnName="Shift_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staffs">
+            <EntityTypeMapping TypeName="schoolModel.Staff">
+              <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="Staff_Id" ColumnName="Staff_Id" />
+                <ScalarProperty Name="Staff_Name" ColumnName="Staff_Name" />
+                <ScalarProperty Name="Staff_Last_Name" ColumnName="Staff_Last_Name" />
+                <ScalarProperty Name="Staff_Email" ColumnName="Staff_Email" />
+                <ScalarProperty Name="Staff_Status" ColumnName="Staff_Status" />
+                <ScalarProperty Name="School_Id" ColumnName="School_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="schoolModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="Student_Id" ColumnName="Student_Id" />
+                <ScalarProperty Name="Student_Name" ColumnName="Student_Name" />
+                <ScalarProperty Name="Student_Last_Name" ColumnName="Student_Last_Name" />
+                <ScalarProperty Name="Student_Available" ColumnName="Student_Available" />
+                <ScalarProperty Name="Student_Status" ColumnName="Student_Status" />
+                <ScalarProperty Name="Student_Sex" ColumnName="Student_Sex" />
+                <ScalarProperty Name="Student_Photo" ColumnName="Student_Photo" />
+                <ScalarProperty Name="School_Id" ColumnName="School_Id" />
+                <ScalarProperty Name="Shift_Id" ColumnName="Shift_Id" />
+                <ScalarProperty Name="Grade_Id" ColumnName="Grade_Id" />
+                <ScalarProperty Name="Index_Id" ColumnName="Index_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Student_Relative">
+            <EntityTypeMapping TypeName="schoolModel.Student_Relative">
+              <MappingFragment StoreEntitySet="Student_Relative">
+                <ScalarProperty Name="Relative_Id" ColumnName="Relative_Id" />
+                <ScalarProperty Name="Student_Id" ColumnName="Student_Id" />
+                <ScalarProperty Name="Relation" ColumnName="Relation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="schoolModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="User_Password" ColumnName="User_Password" />
+                <ScalarProperty Name="User_Last_Login" ColumnName="User_Last_Login" />
+                <ScalarProperty Name="User_Created" ColumnName="User_Created" />
+                <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Announce_Setup" TypeName="schoolModel.Announce_Setup" StoreEntitySet="Announce_Setup">
+            <EndProperty Name="Announce">
+              <ScalarProperty Name="Announce_Id" ColumnName="Announce_Id" />
+            </EndProperty>
+            <EndProperty Name="Group">
+              <ScalarProperty Name="Group_Id" ColumnName="Group_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Group_List" TypeName="schoolModel.Group_List" StoreEntitySet="Group_List">
+            <EndProperty Name="Group">
+              <ScalarProperty Name="Group_Id" ColumnName="Group_Id" />
+            </EndProperty>
+            <EndProperty Name="Student">
+              <ScalarProperty Name="Student_Id" ColumnName="Student_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Staff_Lesson" TypeName="schoolModel.Staff_Lesson" StoreEntitySet="Staff_Lesson">
+            <EndProperty Name="Lesson">
+              <ScalarProperty Name="Lesson_Id" ColumnName="Lesson_Id" />
+            </EndProperty>
+            <EndProperty Name="Staff">
+              <ScalarProperty Name="Staff_Id" ColumnName="Staff_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

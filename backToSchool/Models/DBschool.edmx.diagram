@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="537615ad7c00424b9a9be16ded69599f" Name="Diagram1">
+        <EntityTypeShape EntityType="schoolModel.Announce" Width="1.5" PointX="1.5" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="schoolModel.Class_Attendance" Width="1.5" PointX="8.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="schoolModel.Class_Attendance_Detail" Width="1.5" PointX="10.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="schoolModel.Grade" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="schoolModel.Group" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="schoolModel.Group_Attendance" Width="1.5" PointX="3" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="schoolModel.Index" Width="1.5" PointX="0.75" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="schoolModel.Lesson" Width="1.5" PointX="3.75" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="schoolModel.Period" Width="1.5" PointX="1.5" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="schoolModel.Relative" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="schoolModel.Responsible_Letter" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="schoolModel.Role" Width="1.5" PointX="10.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="schoolModel.School" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="schoolModel.School_Setup" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="schoolModel.Shift" Width="1.5" PointX="0.75" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="schoolModel.Staff" Width="1.5" PointX="6" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="schoolModel.Student" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="schoolModel.Student_Relative" Width="1.5" PointX="8.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="schoolModel.User" Width="1.5" PointX="13" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="schoolModel.class_attendance_detail_class_attendance_attendance_id" ManuallyRouted="false" />
+        <AssociationConnector Association="schoolModel.class_attendance_group_group_id" ManuallyRouted="false" />
+        <AssociationConnector Association="schoolModel.class_attendance_lesson_lesson_id" ManuallyRouted="false" />
+        <AssociationConnector Association="schoolModel.class_attendance_staff_staff_id" ManuallyRouted="false" />
+        <AssociationConnector Association="schoolModel.class_attendance_detail_student_student_id" ManuallyRouted="false" />
+        <AssociationConnector Association="schoolModel.group_grade_grade_id" ManuallyRouted="false" />
+        <AssociationConnector Association="schoolModel.student_grade_grade_id" ManuallyRouted="false" />
+        <AssociationConnector Association="schoolModel.group_attendance_group_group_id" ManuallyRouted="false" />
+        <AssociationConnector Association="schoolModel.group_index_index_id" ManuallyRouted="false" />
+        <AssociationConnector Association="schoolModel.group_period_period_id" ManuallyRouted="false" />
+        <AssociationConnector Association="schoolModel.group_shift_shift_id" ManuallyRouted="false" />
+        <AssociationConnector Association="schoolModel.student_index_index_id" ManuallyRouted="false" />
+        <AssociationConnector Association="schoolModel.responsible_letter_relative_relative_id" ManuallyRouted="false" />
+        <AssociationConnector Association="schoolModel.student_relative_relative_relative_id" ManuallyRouted="false" />
+        <AssociationConnector Association="schoolModel.responsible_letter_student_student_id" ManuallyRouted="false" />
+        <AssociationConnector Association="schoolModel.user_role_role_id" ManuallyRouted="false" />
+        <AssociationConnector Association="schoolModel.school_setup_school_school_id" ManuallyRouted="false" />
+        <AssociationConnector Association="schoolModel.staff_school_school_id" ManuallyRouted="false" />
+        <AssociationConnector Association="schoolModel.student_school_school_id" ManuallyRouted="false" />
+        <AssociationConnector Association="schoolModel.student_shift_shift_id" ManuallyRouted="false" />
+        <AssociationConnector Association="schoolModel.student_relative_student_student_id" ManuallyRouted="false" />
+        <AssociationConnector Association="schoolModel.Announce_Setup" ManuallyRouted="false" />
+        <AssociationConnector Association="schoolModel.Group_List" ManuallyRouted="false" />
+        <AssociationConnector Association="schoolModel.Staff_Lesson" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
