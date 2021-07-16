@@ -77,3 +77,15 @@ C:\Users\kcastillo\source\repos\backToSchool\backToSchool\obj\Debug\backToSchool
 C:\Users\kcastillo\source\repos\backToSchool\backToSchool\obj\Debug\backToSchool.csproj.CopyComplete
 C:\Users\kcastillo\source\repos\backToSchool\backToSchool\obj\Debug\backToSchool.dll
 C:\Users\kcastillo\source\repos\backToSchool\backToSchool\obj\Debug\backToSchool.pdb
+C:\Users\kcastillo\source\repos\backToSchool\backToSchool\bin\EntityFramework.dll
+C:\Users\kcastillo\source\repos\backToSchool\backToSchool\bin\EntityFramework.SqlServer.dll
+C:\Users\kcastillo\source\repos\backToSchool\backToSchool\bin\Swashbuckle.Core.dll
+C:\Users\kcastillo\source\repos\backToSchool\backToSchool\bin\System.Net.Http.Formatting.dll
+C:\Users\kcastillo\source\repos\backToSchool\backToSchool\bin\System.Web.Http.dll
+C:\Users\kcastillo\source\repos\backToSchool\backToSchool\bin\System.Web.Http.WebHost.dll
+C:\Users\kcastillo\source\repos\backToSchool\backToSchool\bin\WebActivatorEx.dll
+C:\Users\kcastillo\source\repos\backToSchool\backToSchool\bin\EntityFramework.xml
+C:\Users\kcastillo\source\repos\backToSchool\backToSchool\bin\EntityFramework.SqlServer.xml
+C:\Users\kcastillo\source\repos\backToSchool\backToSchool\bin\System.Net.Http.Formatting.xml
+C:\Users\kcastillo\source\repos\backToSchool\backToSchool\bin\System.Web.Http.xml
+C:\Users\kcastillo\source\repos\backToSchool\backToSchool\bin\System.Web.Http.WebHost.xml
