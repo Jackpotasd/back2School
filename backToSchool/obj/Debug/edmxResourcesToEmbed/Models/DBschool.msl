@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="schoolModelStoreContainer" CdmEntityContainer="DBschool">
+    <EntitySetMapping Name="Announces">
+      <EntityTypeMapping TypeName="schoolModel.Announce">
+        <MappingFragment StoreEntitySet="Announce">
+          <ScalarProperty Name="Announce_Id" ColumnName="Announce_Id" />
+          <ScalarProperty Name="Announce_Creation" ColumnName="Announce_Creation" />
+          <ScalarProperty Name="Announce_Expiration" ColumnName="Announce_Expiration" />
+          <ScalarProperty Name="Announce_Message" ColumnName="Announce_Message" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Class_Attendance">
+      <EntityTypeMapping TypeName="schoolModel.Class_Attendance">
+        <MappingFragment StoreEntitySet="Class_Attendance">
+          <ScalarProperty Name="Attendance_Id" ColumnName="Attendance_Id" />
+          <ScalarProperty Name="Attendance_Topic" ColumnName="Attendance_Topic" />
+          <ScalarProperty Name="Attendance_Start_Time" ColumnName="Attendance_Start_Time" />
+          <ScalarProperty Name="Attendance_End_Time" ColumnName="Attendance_End_Time" />
+          <ScalarProperty Name="Attendance_Date" ColumnName="Attendance_Date" />
+          <ScalarProperty Name="Staff_Id" ColumnName="Staff_Id" />
+          <ScalarProperty Name="Lesson_Id" ColumnName="Lesson_Id" />
+          <ScalarProperty Name="Group_Id" ColumnName="Group_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Class_Attendance_Detail">
+      <EntityTypeMapping TypeName="schoolModel.Class_Attendance_Detail">
+        <MappingFragment StoreEntitySet="Class_Attendance_Detail">
+          <ScalarProperty Name="Student_Id" ColumnName="Student_Id" />
+          <ScalarProperty Name="Attendance_Id" ColumnName="Attendance_Id" />
+          <ScalarProperty Name="Attend" ColumnName="Attend" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Grades">
+      <EntityTypeMapping TypeName="schoolModel.Grade">
+        <MappingFragment StoreEntitySet="Grade">
+          <ScalarProperty Name="Grade_Id" ColumnName="Grade_Id" />
+          <ScalarProperty Name="Grade_Consecutive_Order" ColumnName="Grade_Consecutive_Order" />
+          <ScalarProperty Name="Grade_Name" ColumnName="Grade_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Groups">
+      <EntityTypeMapping TypeName="schoolModel.Group">
+        <MappingFragment StoreEntitySet="Group">
+          <ScalarProperty Name="Group_Id" ColumnName="Group_Id" />
+          <ScalarProperty Name="Group_Order" ColumnName="Group_Order" />
+          <ScalarProperty Name="Period_Id" ColumnName="Period_Id" />
+          <ScalarProperty Name="Shift_Id" ColumnName="Shift_Id" />
+          <ScalarProperty Name="Grade_Id" ColumnName="Grade_Id" />
+          <ScalarProperty Name="Index_Id" ColumnName="Index_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Group_Attendance">
+      <EntityTypeMapping TypeName="schoolModel.Group_Attendance">
+        <MappingFragment StoreEntitySet="Group_Attendance">
+          <ScalarProperty Name="Group_Id" ColumnName="Group_Id" />
+          <ScalarProperty Name="Group_Date" ColumnName="Group_Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Indices">
+      <EntityTypeMapping TypeName="schoolModel.Index">
+        <MappingFragment StoreEntitySet="Index">
+          <ScalarProperty Name="Index_Id" ColumnName="Index_Id" />
+          <ScalarProperty Name="Index_Name" ColumnName="Index_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lessons">
+      <EntityTypeMapping TypeName="schoolModel.Lesson">
+        <MappingFragment StoreEntitySet="Lesson">
+          <ScalarProperty Name="Lesson_Id" ColumnName="Lesson_Id" />
+          <ScalarProperty Name="Lesson_Name" ColumnName="Lesson_Name" />
+          <ScalarProperty Name="Lesson_Description" ColumnName="Lesson_Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Periods">
+      <EntityTypeMapping TypeName="schoolModel.Period">
+        <MappingFragment StoreEntitySet="Period">
+          <ScalarProperty Name="Period_Id" ColumnName="Period_Id" />
+          <ScalarProperty Name="Period_Description" ColumnName="Period_Description" />
+          <ScalarProperty Name="Period_Start_Date" ColumnName="Period_Start_Date" />
+          <ScalarProperty Name="Period_End_Date" ColumnName="Period_End_Date" />
+          <ScalarProperty Name="Period_Is_Generated" ColumnName="Period_Is_Generated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Relatives">
+      <EntityTypeMapping TypeName="schoolModel.Relative">
+        <MappingFragment StoreEntitySet="Relative">
+          <ScalarProperty Name="Relative_Id" ColumnName="Relative_Id" />
+          <ScalarProperty Name="Relative_Name" ColumnName="Relative_Name" />
+          <ScalarProperty Name="Relative_Last_Name" ColumnName="Relative_Last_Name" />
+          <ScalarProperty Name="Relative_Number" ColumnName="Relative_Number" />
+          <ScalarProperty Name="Relative_Email" ColumnName="Relative_Email" />
+          <ScalarProperty Name="Relative_Status" ColumnName="Relative_Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Responsible_Letter">
+      <EntityTypeMapping TypeName="schoolModel.Responsible_Letter">
+        <MappingFragment StoreEntitySet="Responsible_Letter">
+          <ScalarProperty Name="Student_Id" ColumnName="Student_Id" />
+          <ScalarProperty Name="Letter_Date" ColumnName="Letter_Date" />
+          <ScalarProperty Name="COVID_19" ColumnName="COVID_19" />
+          <ScalarProperty Name="COVID_19_Relatives" ColumnName="COVID_19_Relatives" />
+          <ScalarProperty Name="Cough" ColumnName="Cough" />
+          <ScalarProperty Name="Fever" ColumnName="Fever" />
+          <ScalarProperty Name="Fatigue" ColumnName="Fatigue" />
+          <ScalarProperty Name="Throat_Pain" ColumnName="Throat_Pain" />
+          <ScalarProperty Name="Nasal_Congestion" ColumnName="Nasal_Congestion" />
+          <ScalarProperty Name="Respiratory_Difficulty" ColumnName="Respiratory_Difficulty" />
+          <ScalarProperty Name="Diarrhea" ColumnName="Diarrhea" />
+          <ScalarProperty Name="Cold_Symptoms" ColumnName="Cold_Symptoms" />
+          <ScalarProperty Name="Is_Signed" ColumnName="Is_Signed" />
+          <ScalarProperty Name="Signed_Time" ColumnName="Signed_Time" />
+          <ScalarProperty Name="Global_Attendance" ColumnName="Global_Attendance" />
+          <ScalarProperty Name="Relative_Id" ColumnName="Relative_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="schoolModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+          <ScalarProperty Name="Role_Key" ColumnName="Role_Key" />
+          <ScalarProperty Name="Role_Description" ColumnName="Role_Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Schools">
+      <EntityTypeMapping TypeName="schoolModel.School">
+        <MappingFragment StoreEntitySet="School">
+          <ScalarProperty Name="School_Id" ColumnName="School_Id" />
+          <ScalarProperty Name="School_Name" ColumnName="School_Name" />
+          <ScalarProperty Name="School_Contact_Name" ColumnName="School_Contact_Name" />
+          <ScalarProperty Name="School_Email" ColumnName="School_Email" />
+          <ScalarProperty Name="School_Number" ColumnName="School_Number" />
+          <ScalarProperty Name="School_RFC" ColumnName="School_RFC" />
+          <ScalarProperty Name="School_Status" ColumnName="School_Status" />
+          <ScalarProperty Name="School_Licence_Expiration" ColumnName="School_Licence_Expiration" />
+          <ScalarProperty Name="School_Letter_Required" ColumnName="School_Letter_Required" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="School_Setup">
+      <EntityTypeMapping TypeName="schoolModel.School_Setup">
+        <MappingFragment StoreEntitySet="School_Setup">
+          <ScalarProperty Name="School_Id" ColumnName="School_Id" />
+          <ScalarProperty Name="Max_Capacity" ColumnName="Max_Capacity" />
+          <ScalarProperty Name="Last_Max_Capacity" ColumnName="Last_Max_Capacity" />
+          <ScalarProperty Name="School_Miss_Penalization" ColumnName="School_Miss_Penalization" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Shifts">
+      <EntityTypeMapping TypeName="schoolModel.Shift">
+        <MappingFragment StoreEntitySet="Shift">
+          <ScalarProperty Name="Shift_Id" ColumnName="Shift_Id" />
+          <ScalarProperty Name="Shift_Name" ColumnName="Shift_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staffs">
+      <EntityTypeMapping TypeName="schoolModel.Staff">
+        <MappingFragment StoreEntitySet="Staff">
+          <ScalarProperty Name="Staff_Id" ColumnName="Staff_Id" />
+          <ScalarProperty Name="Staff_Name" ColumnName="Staff_Name" />
+          <ScalarProperty Name="Staff_Last_Name" ColumnName="Staff_Last_Name" />
+          <ScalarProperty Name="Staff_Email" ColumnName="Staff_Email" />
+          <ScalarProperty Name="Staff_Status" ColumnName="Staff_Status" />
+          <ScalarProperty Name="School_Id" ColumnName="School_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="schoolModel.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="Student_Id" ColumnName="Student_Id" />
+          <ScalarProperty Name="Student_Name" ColumnName="Student_Name" />
+          <ScalarProperty Name="Student_Last_Name" ColumnName="Student_Last_Name" />
+          <ScalarProperty Name="Student_Available" ColumnName="Student_Available" />
+          <ScalarProperty Name="Student_Status" ColumnName="Student_Status" />
+          <ScalarProperty Name="Student_Sex" ColumnName="Student_Sex" />
+          <ScalarProperty Name="Student_Photo" ColumnName="Student_Photo" />
+          <ScalarProperty Name="School_Id" ColumnName="School_Id" />
+          <ScalarProperty Name="Shift_Id" ColumnName="Shift_Id" />
+          <ScalarProperty Name="Grade_Id" ColumnName="Grade_Id" />
+          <ScalarProperty Name="Index_Id" ColumnName="Index_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Student_Relative">
+      <EntityTypeMapping TypeName="schoolModel.Student_Relative">
+        <MappingFragment StoreEntitySet="Student_Relative">
+          <ScalarProperty Name="Relative_Id" ColumnName="Relative_Id" />
+          <ScalarProperty Name="Student_Id" ColumnName="Student_Id" />
+          <ScalarProperty Name="Relation" ColumnName="Relation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="schoolModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="User_Password" ColumnName="User_Password" />
+          <ScalarProperty Name="User_Last_Login" ColumnName="User_Last_Login" />
+          <ScalarProperty Name="User_Created" ColumnName="User_Created" />
+          <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Announce_Setup" TypeName="schoolModel.Announce_Setup" StoreEntitySet="Announce_Setup">
+      <EndProperty Name="Announce">
+        <ScalarProperty Name="Announce_Id" ColumnName="Announce_Id" />
+      </EndProperty>
+      <EndProperty Name="Group">
+        <ScalarProperty Name="Group_Id" ColumnName="Group_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Group_List" TypeName="schoolModel.Group_List" StoreEntitySet="Group_List">
+      <EndProperty Name="Group">
+        <ScalarProperty Name="Group_Id" ColumnName="Group_Id" />
+      </EndProperty>
+      <EndProperty Name="Student">
+        <ScalarProperty Name="Student_Id" ColumnName="Student_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Staff_Lesson" TypeName="schoolModel.Staff_Lesson" StoreEntitySet="Staff_Lesson">
+      <EndProperty Name="Lesson">
+        <ScalarProperty Name="Lesson_Id" ColumnName="Lesson_Id" />
+      </EndProperty>
+      <EndProperty Name="Staff">
+        <ScalarProperty Name="Staff_Id" ColumnName="Staff_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
