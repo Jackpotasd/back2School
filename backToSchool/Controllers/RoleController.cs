@@ -11,7 +11,7 @@ namespace backToSchool.Controllers
     [RoutePrefix("role")]
     public class RoleController : Controller
     {
-        // GET: Users
+        // GET: Roles
         [HttpGet, Route("view")]
         public ActionResult Role()
         {
