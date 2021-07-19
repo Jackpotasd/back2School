@@ -19,16 +19,18 @@ namespace backToSchool.Controllers
             return View();
         }
 
-        [HttpPost]
-        [Route("validate")]
-        public ActionResult login()
+        [HttpPost, Route("validate")]
+        public JsonResult Validate(string Id, String Password)
         {
-            return View();
+            using (DBschool db = new DBschool())
+            {
+                var user = db.Users.FirstOrDefault(x => x.User_Id == Id && x.User_Password == Password);
+                return (user != null ? Json("1") : Json("0"));
+            }
         }
 
 
-        [HttpPost]
-        [Route("save")]
+        [HttpPost, Route("save")]
         public ActionResult Save(User user)
         {
             using (DBschool db = new DBschool()) {

@@ -12,30 +12,26 @@ namespace backToSchool.Controllers
     public class RoleController : Controller
     {
         // GET: Users
-        [HttpGet]
-        [Route("view")]
+        [HttpGet, Route("view")]
         public ActionResult Role()
         {
             return View();
         }
 
-        [HttpGet]
-        [Route("getById")]
+        [HttpGet, Route("getById")]
         public ActionResult GetById()
         {
             return View();
         }
 
-        [HttpGet]
-        [Route("getAll")]
+        [HttpGet, Route("getAll")]
         public ActionResult GetAll()
         {
             return View();
         }
 
 
-        [HttpPost]
-        [Route("save")]
+        [HttpPost, Route("save")]
         public ActionResult Save(Role role)
         {
             using (DBschool db = new DBschool())
@@ -50,15 +46,13 @@ namespace backToSchool.Controllers
             }
         }
 
-        [HttpPost]
-        [Route("delete")]
+        [HttpPost, Route("delete")]
         public ActionResult Delete()
         {
             return View();
         }
 
-        [HttpPost]
-        [Route("update")]
+        [HttpPost, Route("update")]
         public ActionResult Update()
         {
             return View();
