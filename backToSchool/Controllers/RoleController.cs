@@ -18,7 +18,7 @@ namespace backToSchool.Controllers
             return View();
         }
 
-        [HttpGet, Route("getById")]
+        [HttpGet, Route("getById/{id}")]
         public ActionResult GetById()
         {
             return View();
