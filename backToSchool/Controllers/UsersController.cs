@@ -25,6 +25,9 @@ namespace backToSchool.Controllers
                 
                 Response.StatusCode = 400;
                 return (user != null ? Json("1") : Json("0"));
+
+
+
             }
         }
 
@@ -49,6 +52,10 @@ namespace backToSchool.Controllers
                 User save = db.Users.Add(user);
                 db.SaveChanges();
                 return Json(save, JsonRequestBehavior.AllowGet);
+
+
+
+
             }
         }
 
