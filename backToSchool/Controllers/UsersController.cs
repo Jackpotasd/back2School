@@ -21,7 +21,9 @@ namespace backToSchool.Controllers
             using (DBschool db = new DBschool())
             {
                 var user = db.Users.FirstOrDefault(x => x.User_Id == id && x.User_Password == password);
-                Response.StatusCode = 200;
+                //var user2 = db.Users.Where(x => x.User_Id == id);
+                
+                Response.StatusCode = 400;
                 return (user != null ? Json("1") : Json("0"));
             }
         }

@@ -20,6 +20,7 @@ namespace backToSchool.Controllers
             switch (module)
             {
                 case "Index":
+
                     return "~/Views/Home/Index.cshtml";
                 case "Login":
                     return "~/Views/Users/Login.cshtml";
