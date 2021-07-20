@@ -1,9 +1,1 @@
-.vs/backToSchool/v16/.suo
-backToSchool/backToSchool.csproj
-backToSchool/bin/backToSchool.dll
-backToSchool/bin/backToSchool.pdb
-backToSchool/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-backToSchool/obj/Debug/backToSchool.csproj.CoreCompileInputs.cache
-backToSchool/obj/Debug/backToSchool.csproj.FileListAbsolute.txt
-backToSchool/obj/Debug/backToSchool.dll
-backToSchool/obj/Debug/backToSchool.pdb
+.vs/
