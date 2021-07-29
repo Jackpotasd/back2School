@@ -18,17 +18,18 @@ namespace backToSchool.Controllers
         }
 
 
-
+        public ActionResult UserLogin()
+        {
+            return View();
+        }
 
 
 
         //-------------------------------------------
         //             Esta es la vista About
         //-------------------------------------------
-        public ActionResult About()
+        public ActionResult UserRegisterForm()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
