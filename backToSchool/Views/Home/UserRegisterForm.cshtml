@@ -10,15 +10,24 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header text-center">
-                    Datos del deudor
+                    Datos del Usuario
                 </div>
                 <div class="card-body">
-                    <form action="/Deudores/Create" method="post" novalidate="novalidate">
-                        <input name="__RequestVerificationToken" type="hidden" value="L3S9xtXcmuB_5zv5zy8_O7JsVLewQ60-XMticKhppD-FFKzJzIoq4wK-XZuODldn-YlNCgtgTltdfsn999bCZim4foizD5ct0KMMzBSqUTg1">                <div class="form col-12 my-2 row">
+                    <form>
+                        <div class="form col-12 my-2 row">
                             <div class="col-lg-4 col-12 my-2">
-                                <label for="nombre">Nombre</label>
-                                <input class="form-control text-box single-line text-box single-line" data-val="true" data-val-maxlength="60 caracteres máx." data-val-maxlength-max="60" data-val-required="Campo requerido" id="nombre" name="nombre" oninput="this.value = this.value.toUpperCase()" placeholder="Ingrese nombre" type="text" value="" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
-                                <span class="field-validation-valid" data-valmsg-for="nombre" data-valmsg-replace="true"></span>
+                                <label for="nombre">Nombre de usuario</label>
+                                <input class="form-control text-box single-line text-box single-line" name="username" placeholder="Ingrese nombre" type="text" value="">
+                            </div>
+                            <div class="col-lg-4 col-12 my-2">
+                                <label for="nombre">Contraseña</label>
+                                <input class="form-control text-box single-line text-box single-line" name="password" placeholder="Ingrese contraseña" type="password" value="">
+                            </div>
+                            <div class="col-lg-4 col-12 my-2">
+                                <label>Tipo de rol</label>
+                                <select class="form-control text-box single-line" id="roles" name="roles" placeholder="Seleccione un rol">
+                                    <option value="">--- Selecciona Rol ---</option>
+                                </select>
                             </div>
                             <div class="col-12 mt-5">
                                 <input type="submit" value="Registrar nuevo deudor" class="btn btn-block btn-rounded btn-outline-success">

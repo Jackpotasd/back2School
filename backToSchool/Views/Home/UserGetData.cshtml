@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "UserGetData";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-center mb-4">
+                    <h4 class="card-title">Lista de usuarios</h4>
+                </div>
+                <div class="table-responsive">
+                    <table class="table no-wrap v-middle mb-0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Nombre de Usuario
+                                </th>
+                                <th>
+                                    Rol
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Jhon Doe</td>
+                                <td>Administrador</td>
+                                <td class="text-right">
+                                    <button class="btn btn-rounded btn-outline-info" onclick="alert('Mostrar información')">+ Info</button>
+                                    <button class="btn btn-rounded btn-outline-danger" onclick="alert('Eliminar Usuario')">Deshabilitar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body" id="detailsModalBody">
+
+            </div>
+        </div>
+    </div>
+</div>
