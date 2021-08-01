@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "RoleGetData";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-center mb-4">
+                    <h4 class="card-title">Lista de roles</h4>
+                </div>
+                <div class="table-responsive">
+                    <table class="table no-wrap v-middle mb-0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Rol
+                                </th>
+                                <th>
+                                    Identificador
+                                </th>
+                                <th>
+                                    Descripción
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Sysadmin</td>
+                                <td>A</td>
+                                <td>Adminstrador del sistema</td>
+                                <td class="text-right">
+                                    <button class="btn btn-rounded btn-outline-info" onclick="alert('Mostrar información')">+ Info</button>
+                                    <button class="btn btn-rounded btn-outline-danger" onclick="alert('Eliminar rol')">Deshabilitar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body" id="detailsModalBody">
+
+            </div>
+        </div>
+    </div>
+</div>
+
