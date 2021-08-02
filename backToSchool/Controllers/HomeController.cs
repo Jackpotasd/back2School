@@ -39,5 +39,16 @@ namespace backToSchool.Controllers
         {
             return View();
         }
+
+        public ActionResult StudentRegisterForm()
+        {
+            return View();
+        }
+
+
+        public ActionResult StudentGetData()
+        {
+            return View();
+        }
     }
 }
