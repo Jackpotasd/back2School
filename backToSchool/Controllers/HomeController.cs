@@ -50,5 +50,16 @@ namespace backToSchool.Controllers
         {
             return View();
         }
+
+        public ActionResult RelativeRegisterForm()
+        {
+            return View();
+        }
+
+
+        public ActionResult RelativeGetData()
+        {
+            return View();
+        }
     }
 }
