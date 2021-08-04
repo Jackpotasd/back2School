@@ -27,19 +27,6 @@ namespace backToSchool.Controllers
         {
             return View();
         }
-
-
-        public ActionResult RoleRegisterForm()
-        {
-            return View();
-        }
-
-
-        public ActionResult RoleGetData()
-        {
-            return View();
-        }
-
         public ActionResult StudentRegisterForm()
         {
             return View();
@@ -61,5 +48,18 @@ namespace backToSchool.Controllers
         {
             return View();
         }
+
+        public ActionResult RoleRegisterForm()
+        {
+            return View();
+        }
+
+
+        public ActionResult RoleGetData()
+        {
+            return View();
+        }
+
+        
     }
 }
